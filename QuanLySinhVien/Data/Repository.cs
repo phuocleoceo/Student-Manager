@@ -20,21 +20,21 @@ namespace QuanLySinhVien.Data
             }
         }
 
-        public T GetOne(string query)
+        public T GetOne(string query, DynamicParameters dp)
         {
             using (IDbConnection con = new SqlConnection(ConnectionString))
             {
                 if (con.State == ConnectionState.Closed) con.Open();
-                return con.Query<T>(query).FirstOrDefault();
+                return con.Query<T>(query, dp).FirstOrDefault();
             }
         }
 
-        public void Execute(string query)
+        public void Execute(string query, DynamicParameters dp)
         {
             using (IDbConnection con = new SqlConnection(ConnectionString))
             {
                 if (con.State == ConnectionState.Closed) con.Open();
-                con.Execute(query);
+                con.Execute(query, dp);
             }
         }
     }

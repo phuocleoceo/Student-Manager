@@ -1,5 +1,6 @@
 ﻿using QuanLySinhVien.Model;
 using System.Collections.Generic;
+using Dapper;
 
 namespace QuanLySinhVien.Data
 {

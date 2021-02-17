@@ -1,5 +1,6 @@
 ﻿using QuanLySinhVien.Model;
 using System.Collections.Generic;
+using Dapper;
 
 namespace QuanLySinhVien.Data
 {
@@ -8,48 +9,66 @@ namespace QuanLySinhVien.Data
 
         public List<SinhVien> Read()
         {
-            string query = $"SELECT * FROM SinhVien";
+            string query = "SELECT * FROM SinhVien";
             return GetAll(query);
         }
         public List<SinhVien> Search(string Name)
         {
+            DynamicParameters dp = new DynamicParameters();
             string query = $@"SELECT * FROM SinhVien 
                             WHERE Ten LIKE N'{Name.ToLower()}%' 
                                OR Ten LIKE N'{Name.ToUpper()}%'";
             return GetAll(query);
         }
 
-        public void Insert(SinhVien entity)
+        public void Insert(SinhVien sv)
         {
-            string query = $@"INSERT INTO  SinhVien (Ho, Ten, NgaySinh, GioiTinh, DiaChi, NganhHoc) 
-                           values ( N'{entity.Ho}', N'{entity.Ten}', '{entity.NgaySinh}', {entity.GioiTinh}, N'{entity.DiaChi}', N'{entity.NganhHoc}')";
-            Execute(query);
+            string query = @"INSERT INTO  SinhVien (Ho, Ten, NgaySinh, GioiTinh, DiaChi, NganhHoc) 
+                        values ( @Ho, @Ten, @NgaySinh, @GioiTinh, @DiaChi, @NganhHoc)";
+            DynamicParameters dp = new DynamicParameters();
+            dp.Add("@Ho", sv.Ho);
+            dp.Add("@Ten", sv.Ten);
+            dp.Add("@NgaySinh", sv.NgaySinh);
+            dp.Add("@GioiTinh", sv.GioiTinh);
+            dp.Add("@DiaChi", sv.DiaChi);
+            dp.Add("@NganhHoc", sv.NganhHoc);
+            Execute(query, dp);
         }
 
         public List<SinhVien> Sort()
         {
-            string query = $"SELECT * FROM SinhVien ORDER BY Ten ASC";
+            string query = "SELECT * FROM SinhVien ORDER BY Ten ASC";
             return GetAll(query);
         }
 
         public void Delete(int id)
         {
-            string query = $"DELETE FROM SinhVien WHERE Id = {id}";
-            Execute(query);
+            string query = "DELETE FROM SinhVien WHERE Id = @Id";
+            DynamicParameters dp = new DynamicParameters();
+            dp.Add("@Id", id);
+            Execute(query,dp);
         }
 
         public void Update(SinhVien sv)
         {
-            string query = $@"UPDATE SinhVien
+            string query = @"UPDATE SinhVien
                             SET
-                                Ho = N'{sv.Ho}' ,
-                                Ten = N'{sv.Ten}' ,
-                                NgaySinh = '{sv.NgaySinh}' ,
-                                GioiTinh = {sv.GioiTinh} ,
-                                DiaChi = N'{sv.DiaChi}' ,
-                                NganhHoc = N'{sv.NganhHoc}'
-                            WHERE Id = {sv.Id}";
-            Execute(query);
+                                Ho = @Ho ,
+                                Ten = @Ten ,
+                                NgaySinh = @NgaySinh ,
+                                GioiTinh = @GioiTinh ,
+                                DiaChi = @DiaChi ,
+                                NganhHoc = @NganhHoc
+                            WHERE Id = @Id";
+            DynamicParameters dp = new DynamicParameters();
+            dp.Add("@Ho", sv.Ho);
+            dp.Add("@Ten", sv.Ten);
+            dp.Add("@NgaySinh", sv.NgaySinh);
+            dp.Add("@GioiTinh", sv.GioiTinh);
+            dp.Add("@DiaChi", sv.DiaChi);
+            dp.Add("@NganhHoc", sv.NganhHoc);
+            dp.Add("@Id", sv.Id);
+            Execute(query,dp);
         }
     }
 }
