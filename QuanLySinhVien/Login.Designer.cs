@@ -44,7 +44,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(16, 85);
+            this.label2.Location = new System.Drawing.Point(28, 90);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 20);
             this.label2.TabIndex = 0;
@@ -55,7 +55,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(52, 130);
+            this.label3.Location = new System.Drawing.Point(64, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 20);
             this.label3.TabIndex = 0;
@@ -68,7 +68,7 @@
             this.btnSHOWPASS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSHOWPASS.FlatAppearance.BorderSize = 0;
             this.btnSHOWPASS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSHOWPASS.Location = new System.Drawing.Point(325, 123);
+            this.btnSHOWPASS.Location = new System.Drawing.Point(337, 128);
             this.btnSHOWPASS.Name = "btnSHOWPASS";
             this.btnSHOWPASS.Size = new System.Drawing.Size(26, 26);
             this.btnSHOWPASS.TabIndex = 3;
@@ -82,7 +82,7 @@
             this.btnHIDEPASS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnHIDEPASS.FlatAppearance.BorderSize = 0;
             this.btnHIDEPASS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHIDEPASS.Location = new System.Drawing.Point(325, 123);
+            this.btnHIDEPASS.Location = new System.Drawing.Point(337, 128);
             this.btnHIDEPASS.Name = "btnHIDEPASS";
             this.btnHIDEPASS.Size = new System.Drawing.Size(26, 26);
             this.btnHIDEPASS.TabIndex = 3;
@@ -94,7 +94,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(320, 217);
+            this.label4.Location = new System.Drawing.Point(326, 223);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 17);
             this.label4.TabIndex = 4;
@@ -103,7 +103,7 @@
             // btnDangNhap
             // 
             this.btnDangNhap.Depth = 0;
-            this.btnDangNhap.Location = new System.Drawing.Point(161, 174);
+            this.btnDangNhap.Location = new System.Drawing.Point(161, 184);
             this.btnDangNhap.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Primary = true;
@@ -118,7 +118,7 @@
             this.txtNick.BackColor = System.Drawing.Color.White;
             this.txtNick.Depth = 0;
             this.txtNick.Hint = "";
-            this.txtNick.Location = new System.Drawing.Point(150, 85);
+            this.txtNick.Location = new System.Drawing.Point(162, 90);
             this.txtNick.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtNick.Name = "txtNick";
             this.txtNick.PasswordChar = '\0';
@@ -134,7 +134,7 @@
             this.txtPass.BackColor = System.Drawing.Color.White;
             this.txtPass.Depth = 0;
             this.txtPass.Hint = "";
-            this.txtPass.Location = new System.Drawing.Point(150, 127);
+            this.txtPass.Location = new System.Drawing.Point(162, 132);
             this.txtPass.MouseState = MaterialSkin.MouseState.HOVER;
             this.txtPass.Name = "txtPass";
             this.txtPass.PasswordChar = '\0';
@@ -150,9 +150,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(400, 233);
-            this.Controls.Add(this.btnHIDEPASS);
+            this.ClientSize = new System.Drawing.Size(408, 243);
             this.Controls.Add(this.btnSHOWPASS);
+            this.Controls.Add(this.btnHIDEPASS);
             this.Controls.Add(this.txtNick);
             this.Controls.Add(this.btnDangNhap);
             this.Controls.Add(this.label4);

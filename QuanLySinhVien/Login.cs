@@ -14,6 +14,7 @@ namespace QuanLySinhVien
         {
             InitializeComponent();
             SetupMaterialSkin();
+            txtPass.UseSystemPasswordChar = true;
             repository = new AccountRepository();
         }
         private void btnDangNhap_Click(object sender, EventArgs e)
