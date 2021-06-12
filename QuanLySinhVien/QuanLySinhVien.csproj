@@ -90,6 +90,7 @@
     <Compile Include="Data\AccountRepository.cs" />
     <Compile Include="Data\Repository.cs" />
     <Compile Include="Data\SinhVienRepository.cs" />
+    <Compile Include="Extension.cs" />
     <Compile Include="Model\Account.cs" />
     <Compile Include="Model\SinhVien.cs" />
     <Compile Include="Menu.cs">

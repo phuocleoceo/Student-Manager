@@ -12,12 +12,13 @@ namespace QuanLySinhVien
     public partial class Menu : Form
     {
         /*-------------------------------------------------------*/
-        SinhVienRepository repository = new SinhVienRepository();
+        private readonly SinhVienRepository repository;
         List<SinhVien> list = new List<SinhVien>();
         /*-------------------------------------------------------*/
         public Menu()
         {
             InitializeComponent();
+            repository = new SinhVienRepository();
         }
         private void Menu_Load(object sender, EventArgs e)
         {
@@ -95,20 +96,27 @@ namespace QuanLySinhVien
 
         private void btnThemSV_Click(object sender, EventArgs e)
         {
-            SinhVien sv = new SinhVien
+            try
             {
-                Ho = txtHO.Text,
-                Ten = txtTEN.Text,
-                NgaySinh = Convert.ToDateTime(txtNGAYSINH.Text),
-                GioiTinh = (rdbNAM.Checked) ? 1 : 0,
-                DiaChi = txtDIACHI.Text,
-                NganhHoc = txtNGANH.Text,
-                MaSinhVien = "",
-                Email = ""
-            };
-            repository.Insert(sv);
-            LoadTableFromDatabase();
-            ClearTextBox();
+                SinhVien sv = new SinhVien
+                {
+                    Ho = txtHO.Text,
+                    Ten = txtTEN.Text,
+                    NgaySinh = Convert.ToDateTime(txtNGAYSINH.Text),
+                    GioiTinh = (rdbNAM.Checked) ? 1 : 0,
+                    DiaChi = txtDIACHI.Text,
+                    NganhHoc = txtNGANH.Text,
+                    MaSinhVien = "",
+                    Email = ""
+                };
+                repository.Insert(sv);
+                LoadTableFromDatabase();
+                ClearTextBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnSXDS_Click(object sender, EventArgs e)
@@ -154,27 +162,35 @@ namespace QuanLySinhVien
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            int updateId = 0;
-            foreach (DataGridViewRow row in dgvResult.SelectedRows)
+            try
             {
-                updateId = Convert.ToInt32(row.Cells[0].Value.ToString());
+                int updateId = 0;
+                foreach (DataGridViewRow row in dgvResult.SelectedRows)
+                {
+                    updateId = Convert.ToInt32(row.Cells[0].Value.ToString());
+                }
+                SinhVien sv = new SinhVien
+                {
+                    Id = updateId,
+                    Ho = txtHO.Text,
+                    Ten = txtTEN.Text,
+                    NgaySinh = Convert.ToDateTime(txtNGAYSINH.Text),
+                    GioiTinh = (rdbNAM.Checked) ? 1 : 0,
+                    DiaChi = txtDIACHI.Text,
+                    NganhHoc = txtNGANH.Text,
+                    MaSinhVien = "",
+                    Email = ""
+                };
+                repository.Update(sv);
+                LoadTableFromDatabase();
+                ClearTextBox();
             }
-            SinhVien sv = new SinhVien
+            catch (Exception ex)
             {
-                Id = updateId,
-                Ho = txtHO.Text,
-                Ten = txtTEN.Text,
-                NgaySinh = Convert.ToDateTime(txtNGAYSINH.Text),
-                GioiTinh = (rdbNAM.Checked) ? 1 : 0,
-                DiaChi = txtDIACHI.Text,
-                NganhHoc = txtNGANH.Text,
-                MaSinhVien = "",
-                Email = ""
-            };
-            repository.Update(sv);
-            LoadTableFromDatabase();
-            ClearTextBox();
+                MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
         #region MSV Email XuatDS
         private void btnXuatDS_Click(object sender, EventArgs e)
         {
@@ -256,6 +272,5 @@ namespace QuanLySinhVien
             LoadTableFromList();
         }
         #endregion
-
     }
 }

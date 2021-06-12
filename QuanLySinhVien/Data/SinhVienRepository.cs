@@ -1,12 +1,13 @@
 ﻿using QuanLySinhVien.Model;
 using System.Collections.Generic;
+using QuanLySinhVien;
 using Dapper;
+using System;
 
 namespace QuanLySinhVien.Data
 {
     public class SinhVienRepository : Repository<SinhVien>
     {
-
         public List<SinhVien> Read()
         {
             string query = "SELECT * FROM SinhVien";
@@ -23,16 +24,20 @@ namespace QuanLySinhVien.Data
 
         public void Insert(SinhVien sv)
         {
-            string query = @"INSERT INTO  SinhVien (Ho, Ten, NgaySinh, GioiTinh, DiaChi, NganhHoc) 
+            if (sv.Validate().Length == 0)
+            {
+                string query = @"INSERT INTO  SinhVien (Ho, Ten, NgaySinh, GioiTinh, DiaChi, NganhHoc) 
                         values ( @Ho, @Ten, @NgaySinh, @GioiTinh, @DiaChi, @NganhHoc)";
-            DynamicParameters dp = new DynamicParameters();
-            dp.Add("@Ho", sv.Ho);
-            dp.Add("@Ten", sv.Ten);
-            dp.Add("@NgaySinh", sv.NgaySinh);
-            dp.Add("@GioiTinh", sv.GioiTinh);
-            dp.Add("@DiaChi", sv.DiaChi);
-            dp.Add("@NganhHoc", sv.NganhHoc);
-            Execute(query, dp);
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("@Ho", sv.Ho);
+                dp.Add("@Ten", sv.Ten);
+                dp.Add("@NgaySinh", sv.NgaySinh);
+                dp.Add("@GioiTinh", sv.GioiTinh);
+                dp.Add("@DiaChi", sv.DiaChi);
+                dp.Add("@NganhHoc", sv.NganhHoc);
+                Execute(query, dp);
+            }
+            else throw new Exception(sv.Validate());
         }
 
         public List<SinhVien> Sort()
@@ -51,7 +56,9 @@ namespace QuanLySinhVien.Data
 
         public void Update(SinhVien sv)
         {
-            string query = @"UPDATE SinhVien
+            if (sv.Validate().Length == 0)
+            {
+                string query = @"UPDATE SinhVien
                             SET
                                 Ho = @Ho ,
                                 Ten = @Ten ,
@@ -60,15 +67,17 @@ namespace QuanLySinhVien.Data
                                 DiaChi = @DiaChi ,
                                 NganhHoc = @NganhHoc
                             WHERE Id = @Id";
-            DynamicParameters dp = new DynamicParameters();
-            dp.Add("@Ho", sv.Ho);
-            dp.Add("@Ten", sv.Ten);
-            dp.Add("@NgaySinh", sv.NgaySinh);
-            dp.Add("@GioiTinh", sv.GioiTinh);
-            dp.Add("@DiaChi", sv.DiaChi);
-            dp.Add("@NganhHoc", sv.NganhHoc);
-            dp.Add("@Id", sv.Id);
-            Execute(query,dp);
+                DynamicParameters dp = new DynamicParameters();
+                dp.Add("@Ho", sv.Ho);
+                dp.Add("@Ten", sv.Ten);
+                dp.Add("@NgaySinh", sv.NgaySinh);
+                dp.Add("@GioiTinh", sv.GioiTinh);
+                dp.Add("@DiaChi", sv.DiaChi);
+                dp.Add("@NganhHoc", sv.NganhHoc);
+                dp.Add("@Id", sv.Id);
+                Execute(query, dp);
+            }
+            else throw new Exception(sv.Validate());
         }
     }
 }
