@@ -16,9 +16,9 @@ namespace QuanLySinhVien
         public SortableBindingList(IEnumerable<T> list)
         {
             // O(n)
-            foreach (object o in list)
+            foreach (T o in list)
             {
-                this.Add((T)o);
+                this.Add(o);
             }
         }
 

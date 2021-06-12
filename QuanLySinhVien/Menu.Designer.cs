@@ -48,7 +48,6 @@
             this.btnDelete = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnCESV = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnCMSV = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnSXDS = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnUpdate = new MaterialSkin.Controls.MaterialRaisedButton();
             this.txtSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -269,20 +268,20 @@
             // btnXuatDS
             // 
             this.btnXuatDS.Depth = 0;
-            this.btnXuatDS.Location = new System.Drawing.Point(848, 575);
+            this.btnXuatDS.Location = new System.Drawing.Point(763, 575);
             this.btnXuatDS.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnXuatDS.Name = "btnXuatDS";
             this.btnXuatDS.Primary = true;
-            this.btnXuatDS.Size = new System.Drawing.Size(73, 39);
+            this.btnXuatDS.Size = new System.Drawing.Size(91, 39);
             this.btnXuatDS.TabIndex = 10;
-            this.btnXuatDS.Text = "Lưu";
+            this.btnXuatDS.Text = "Xuất Excel";
             this.btnXuatDS.UseVisualStyleBackColor = true;
             this.btnXuatDS.Click += new System.EventHandler(this.btnXuatDS_Click);
             // 
             // btnDelete
             // 
             this.btnDelete.Depth = 0;
-            this.btnDelete.Location = new System.Drawing.Point(724, 575);
+            this.btnDelete.Location = new System.Drawing.Point(633, 575);
             this.btnDelete.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Primary = true;
@@ -295,7 +294,7 @@
             // btnCESV
             // 
             this.btnCESV.Depth = 0;
-            this.btnCESV.Location = new System.Drawing.Point(585, 575);
+            this.btnCESV.Location = new System.Drawing.Point(492, 575);
             this.btnCESV.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCESV.Name = "btnCESV";
             this.btnCESV.Primary = true;
@@ -308,7 +307,7 @@
             // btnCMSV
             // 
             this.btnCMSV.Depth = 0;
-            this.btnCMSV.Location = new System.Drawing.Point(448, 575);
+            this.btnCMSV.Location = new System.Drawing.Point(354, 575);
             this.btnCMSV.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCMSV.Name = "btnCMSV";
             this.btnCMSV.Primary = true;
@@ -318,23 +317,10 @@
             this.btnCMSV.UseVisualStyleBackColor = true;
             this.btnCMSV.Click += new System.EventHandler(this.btnCMSV_Click);
             // 
-            // btnSXDS
-            // 
-            this.btnSXDS.Depth = 0;
-            this.btnSXDS.Location = new System.Drawing.Point(310, 575);
-            this.btnSXDS.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnSXDS.Name = "btnSXDS";
-            this.btnSXDS.Primary = true;
-            this.btnSXDS.Size = new System.Drawing.Size(86, 39);
-            this.btnSXDS.TabIndex = 10;
-            this.btnSXDS.Text = "Sắp xếp";
-            this.btnSXDS.UseVisualStyleBackColor = true;
-            this.btnSXDS.Click += new System.EventHandler(this.btnSXDS_Click);
-            // 
             // btnUpdate
             // 
             this.btnUpdate.Depth = 0;
-            this.btnUpdate.Location = new System.Drawing.Point(178, 575);
+            this.btnUpdate.Location = new System.Drawing.Point(211, 575);
             this.btnUpdate.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Primary = true;
@@ -379,7 +365,6 @@
             this.ClientSize = new System.Drawing.Size(1084, 625);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.btnSXDS);
             this.Controls.Add(this.btnCMSV);
             this.Controls.Add(this.btnCESV);
             this.Controls.Add(this.btnDelete);
@@ -431,7 +416,6 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnDelete;
         private MaterialSkin.Controls.MaterialRaisedButton btnCESV;
         private MaterialSkin.Controls.MaterialRaisedButton btnCMSV;
-        private MaterialSkin.Controls.MaterialRaisedButton btnSXDS;
         private MaterialSkin.Controls.MaterialRaisedButton btnUpdate;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtSearch;
         private System.Windows.Forms.PictureBox pictureBox1;

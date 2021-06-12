@@ -109,14 +109,6 @@ namespace QuanLySinhVien
             }
         }
 
-        private void btnSXDS_Click(object sender, EventArgs e)
-        {
-            ClearTable();
-            dgvResult.DataSource = repository.Sort();
-            dgvResult.Columns["Id"].Visible = false;
-            list = repository.Sort();
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Confirm Delete ?", "Warning !", MessageBoxButtons.YesNo);

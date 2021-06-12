@@ -40,12 +40,6 @@ namespace QuanLySinhVien.Data
             else throw new Exception(sv.Validate());
         }
 
-        public SortableBindingList<SinhVien> Sort()
-        {
-            string query = "SELECT * FROM SinhVien ORDER BY Ten ASC";
-            return GetAll(query);
-        }
-
         public void Delete(int id)
         {
             string query = "DELETE FROM SinhVien WHERE Id = @Id";
