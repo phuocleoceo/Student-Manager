@@ -15,7 +15,7 @@ namespace QuanLySinhVien
     {
         /*-------------------------------------------------------*/
         private readonly SinhVienRepository repository;
-        List<SinhVien> list = new List<SinhVien>();
+        SortableBindingList<SinhVien> list = new SortableBindingList<SinhVien>();
         /*-------------------------------------------------------*/
         public Menu()
         {

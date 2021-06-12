@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using QuanLySinhVien;
 
 namespace QuanLySinhVien.Data
 {
@@ -11,16 +12,16 @@ namespace QuanLySinhVien.Data
     {
         private string ConnectionString => ConfigurationManager.ConnectionStrings["QLSV"].ConnectionString;
 
-        public List<T> GetAll(string query, DynamicParameters dp=null)
+        public SortableBindingList<T> GetAll(string query, DynamicParameters dp = null)
         {
             using (IDbConnection con = new SqlConnection(ConnectionString))
             {
                 if (con.State == ConnectionState.Closed) con.Open();
-                return con.Query<T>(query,dp).ToList();
+                return con.Query<T>(query, dp).ToSortableBindingList();
             }
         }
 
-        public T GetOne(string query, DynamicParameters dp=null)
+        public T GetOne(string query, DynamicParameters dp = null)
         {
             using (IDbConnection con = new SqlConnection(ConnectionString))
             {

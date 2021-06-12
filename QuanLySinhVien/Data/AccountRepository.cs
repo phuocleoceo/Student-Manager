@@ -6,7 +6,7 @@ namespace QuanLySinhVien.Data
 {
     public class AccountRepository : Repository<Account>
     {
-        public List<Account> Read()
+        public SortableBindingList<Account> Read()
         {
             string query = "SELECT * FROM Account";
             return GetAll(query);

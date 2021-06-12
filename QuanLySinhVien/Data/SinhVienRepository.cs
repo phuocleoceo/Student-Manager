@@ -8,12 +8,12 @@ namespace QuanLySinhVien.Data
 {
     public class SinhVienRepository : Repository<SinhVien>
     {
-        public List<SinhVien> Read()
+        public SortableBindingList<SinhVien> Read()
         {
             string query = "SELECT * FROM SinhVien";
             return GetAll(query);
         }
-        public List<SinhVien> Search(string Name)
+        public SortableBindingList<SinhVien> Search(string Name)
         {
             string query = @"SELECT * FROM SinhVien 
                             WHERE Ten LIKE N'%' + @Name + '%'";
@@ -40,7 +40,7 @@ namespace QuanLySinhVien.Data
             else throw new Exception(sv.Validate());
         }
 
-        public List<SinhVien> Sort()
+        public SortableBindingList<SinhVien> Sort()
         {
             string query = "SELECT * FROM SinhVien ORDER BY Ten ASC";
             return GetAll(query);
@@ -51,7 +51,7 @@ namespace QuanLySinhVien.Data
             string query = "DELETE FROM SinhVien WHERE Id = @Id";
             DynamicParameters dp = new DynamicParameters();
             dp.Add("@Id", id);
-            Execute(query,dp);
+            Execute(query, dp);
         }
 
         public void Update(SinhVien sv)
