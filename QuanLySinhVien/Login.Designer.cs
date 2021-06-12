@@ -81,7 +81,7 @@
             this.btnDangNhap.Location = new System.Drawing.Point(146, 174);
             this.btnDangNhap.Name = "btnDangNhap";
             this.btnDangNhap.Size = new System.Drawing.Size(106, 50);
-            this.btnDangNhap.TabIndex = 1;
+            this.btnDangNhap.TabIndex = 3;
             this.btnDangNhap.Text = "Đăng nhập ";
             this.btnDangNhap.UseVisualStyleBackColor = false;
             this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
@@ -93,7 +93,7 @@
             this.txtNick.Location = new System.Drawing.Point(144, 74);
             this.txtNick.Name = "txtNick";
             this.txtNick.Size = new System.Drawing.Size(220, 26);
-            this.txtNick.TabIndex = 2;
+            this.txtNick.TabIndex = 1;
             // 
             // txtPass
             // 
@@ -142,6 +142,7 @@
             // 
             // Login
             // 
+            this.AcceptButton = this.btnDangNhap;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
@@ -158,6 +159,7 @@
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
