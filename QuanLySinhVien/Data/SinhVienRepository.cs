@@ -14,11 +14,11 @@ namespace QuanLySinhVien.Data
         }
         public List<SinhVien> Search(string Name)
         {
+            string query = @"SELECT * FROM SinhVien 
+                            WHERE Ten LIKE N'%' + @Name + '%'";
             DynamicParameters dp = new DynamicParameters();
-            string query = $@"SELECT * FROM SinhVien 
-                            WHERE Ten LIKE N'{Name.ToLower()}%' 
-                               OR Ten LIKE N'{Name.ToUpper()}%'";
-            return GetAll(query);
+            dp.Add("@Name", Name);
+            return GetAll(query, dp);
         }
 
         public void Insert(SinhVien sv)

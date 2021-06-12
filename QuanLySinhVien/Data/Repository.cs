@@ -11,16 +11,16 @@ namespace QuanLySinhVien.Data
     {
         private string ConnectionString => ConfigurationManager.ConnectionStrings["QLSV"].ConnectionString;
 
-        public List<T> GetAll(string query)
+        public List<T> GetAll(string query, DynamicParameters dp=null)
         {
             using (IDbConnection con = new SqlConnection(ConnectionString))
             {
                 if (con.State == ConnectionState.Closed) con.Open();
-                return con.Query<T>(query).ToList();
+                return con.Query<T>(query,dp).ToList();
             }
         }
 
-        public T GetOne(string query, DynamicParameters dp)
+        public T GetOne(string query, DynamicParameters dp=null)
         {
             using (IDbConnection con = new SqlConnection(ConnectionString))
             {
