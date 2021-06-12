@@ -6,10 +6,12 @@ using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
+using MaterialSkin;
 
 namespace QuanLySinhVien
 {
-    public partial class Menu : Form
+    public partial class Menu : MaterialForm
     {
         /*-------------------------------------------------------*/
         private readonly SinhVienRepository repository;
@@ -19,27 +21,24 @@ namespace QuanLySinhVien
         {
             InitializeComponent();
             repository = new SinhVienRepository();
-        }
-        private void Menu_Load(object sender, EventArgs e)
-        {
+            SetupMaterialSkin();
             grbTIMSV.Hide();
-            FormatTable();
+            dgvResult.FormatDataGridView();
             LoadTableFromDatabase();
         }
         #region PhuongThucBoTro
-
-        void FormatTable()
+        private void SetupMaterialSkin()
         {
-            dgvResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvResult.DefaultCellStyle.Font = new Font("Tahoma", 12);
-            dgvResult.DefaultCellStyle.ForeColor = Color.Blue;
-            dgvResult.DefaultCellStyle.BackColor = Color.Beige;   //Beige
-            dgvResult.DefaultCellStyle.SelectionForeColor = Color.Yellow;
-            dgvResult.DefaultCellStyle.SelectionBackColor = Color.Black;
-            dgvResult.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvResult.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10);
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.ROBOTO_REGULAR_11 = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
+            materialSkinManager.ROBOTO_MEDIUM_12 = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
+            materialSkinManager.ROBOTO_MEDIUM_11 = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
+            //materialSkinManager.ROBOTO_MEDIUM_10 = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700,
+                                                Primary.Indigo100, Accent.Pink200, TextShade.WHITE);
         }
-
         void ClearTextBox()
         {
             txtHO.Text = "";
@@ -70,14 +69,6 @@ namespace QuanLySinhVien
             dgvResult.Rows.Clear();
         }
         #endregion
-
-        private void btnDangXuat_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Login login = new Login();
-            login.Closed += (s, agrs) => this.Close();
-            login.Show();
-        }
 
         private void dgvResult_SelectionChanged(object sender, EventArgs e)
         {
