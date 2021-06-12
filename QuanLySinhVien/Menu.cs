@@ -22,7 +22,6 @@ namespace QuanLySinhVien
             InitializeComponent();
             repository = new SinhVienRepository();
             SetupMaterialSkin();
-            grbTIMSV.Hide();
             dgvResult.FormatDataGridView();
             LoadTableFromDatabase();
         }
@@ -118,23 +117,6 @@ namespace QuanLySinhVien
             list = repository.Sort();
         }
 
-        private void btnTimSV_Click(object sender, EventArgs e)
-        {
-            grbTIMSV.Show();
-        }
-
-        private void txtTKMSV_TextChanged(object sender, EventArgs e)
-        {
-            ClearTable();
-            dgvResult.DataSource = repository.Search(txtSearch.Text);
-            dgvResult.Columns["Id"].Visible = false;
-        }
-
-        private void btnCLOSESEARCH_Click(object sender, EventArgs e)
-        {
-            grbTIMSV.Hide();
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DialogResult dialogResult = MessageBox.Show("Confirm Delete ?", "Warning !", MessageBoxButtons.YesNo);
@@ -180,6 +162,13 @@ namespace QuanLySinhVien
             {
                 MessageBox.Show(ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            ClearTable();
+            dgvResult.DataSource = repository.Search(txtSearch.Text);
+            dgvResult.Columns["Id"].Visible = false;
         }
 
         #region MSV Email XuatDS
