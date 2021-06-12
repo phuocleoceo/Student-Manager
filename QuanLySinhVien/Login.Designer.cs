@@ -72,6 +72,7 @@
             this.btnSHOWPASS.Name = "btnSHOWPASS";
             this.btnSHOWPASS.Size = new System.Drawing.Size(26, 26);
             this.btnSHOWPASS.TabIndex = 3;
+            this.btnSHOWPASS.TabStop = false;
             this.btnSHOWPASS.UseVisualStyleBackColor = false;
             this.btnSHOWPASS.Click += new System.EventHandler(this.btnPASS_Click);
             // 
@@ -86,6 +87,7 @@
             this.btnHIDEPASS.Name = "btnHIDEPASS";
             this.btnHIDEPASS.Size = new System.Drawing.Size(26, 26);
             this.btnHIDEPASS.TabIndex = 3;
+            this.btnHIDEPASS.TabStop = false;
             this.btnHIDEPASS.UseVisualStyleBackColor = false;
             this.btnHIDEPASS.Click += new System.EventHandler(this.btnHIDEPASS_Click);
             // 
@@ -126,7 +128,7 @@
             this.txtNick.SelectionLength = 0;
             this.txtNick.SelectionStart = 0;
             this.txtNick.Size = new System.Drawing.Size(200, 23);
-            this.txtNick.TabIndex = 6;
+            this.txtNick.TabIndex = 1;
             this.txtNick.UseSystemPasswordChar = false;
             // 
             // txtPass
@@ -142,7 +144,7 @@
             this.txtPass.SelectionLength = 0;
             this.txtPass.SelectionStart = 0;
             this.txtPass.Size = new System.Drawing.Size(200, 23);
-            this.txtPass.TabIndex = 6;
+            this.txtPass.TabIndex = 2;
             this.txtPass.UseSystemPasswordChar = false;
             // 
             // Login

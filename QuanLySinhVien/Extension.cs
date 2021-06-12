@@ -26,6 +26,11 @@ namespace QuanLySinhVien
             return sb.ToString();
         }
 
+        public static SortableBindingList<T> ToSortableBindingList<T>(this IEnumerable<T> data)
+        {
+            return new SortableBindingList<T>(data);
+        }
+
         public static void FormatDataGridView(this DataGridView dgv)
         {
             dgv.ReadOnly = true;

@@ -36,9 +36,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dgvResult = new System.Windows.Forms.DataGridView();
-            this.grbTIMSV = new System.Windows.Forms.GroupBox();
-            this.btnCLOSESEARCH = new System.Windows.Forms.Button();
-            this.txtSearch = new System.Windows.Forms.TextBox();
             this.txtHO = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtDIACHI = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtTEN = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -49,13 +46,14 @@
             this.btnThemSV = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnXuatDS = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnDelete = new MaterialSkin.Controls.MaterialRaisedButton();
-            this.btnTimSV = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnCESV = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnCMSV = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnSXDS = new MaterialSkin.Controls.MaterialRaisedButton();
             this.btnUpdate = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.txtSearch = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).BeginInit();
-            this.grbTIMSV.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -138,37 +136,6 @@
             this.dgvResult.Size = new System.Drawing.Size(1038, 371);
             this.dgvResult.TabIndex = 5;
             this.dgvResult.SelectionChanged += new System.EventHandler(this.dgvResult_SelectionChanged);
-            // 
-            // grbTIMSV
-            // 
-            this.grbTIMSV.Controls.Add(this.btnCLOSESEARCH);
-            this.grbTIMSV.Controls.Add(this.txtSearch);
-            this.grbTIMSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbTIMSV.Location = new System.Drawing.Point(506, 442);
-            this.grbTIMSV.Name = "grbTIMSV";
-            this.grbTIMSV.Size = new System.Drawing.Size(228, 125);
-            this.grbTIMSV.TabIndex = 7;
-            this.grbTIMSV.TabStop = false;
-            this.grbTIMSV.Text = "Tìm sinh viên theo Tên :";
-            // 
-            // btnCLOSESEARCH
-            // 
-            this.btnCLOSESEARCH.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCLOSESEARCH.Location = new System.Drawing.Point(86, 75);
-            this.btnCLOSESEARCH.Name = "btnCLOSESEARCH";
-            this.btnCLOSESEARCH.Size = new System.Drawing.Size(61, 32);
-            this.btnCLOSESEARCH.TabIndex = 2;
-            this.btnCLOSESEARCH.Text = "Đóng";
-            this.btnCLOSESEARCH.UseVisualStyleBackColor = true;
-            this.btnCLOSESEARCH.Click += new System.EventHandler(this.btnCLOSESEARCH_Click);
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(19, 36);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(196, 27);
-            this.txtSearch.TabIndex = 0;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtTKMSV_TextChanged);
             // 
             // txtHO
             // 
@@ -265,6 +232,7 @@
             this.rdbNAM.Ripple = true;
             this.rdbNAM.Size = new System.Drawing.Size(58, 30);
             this.rdbNAM.TabIndex = 9;
+            this.rdbNAM.TabStop = true;
             this.rdbNAM.Text = "Nam";
             this.rdbNAM.UseVisualStyleBackColor = false;
             // 
@@ -301,7 +269,7 @@
             // btnXuatDS
             // 
             this.btnXuatDS.Depth = 0;
-            this.btnXuatDS.Location = new System.Drawing.Point(897, 575);
+            this.btnXuatDS.Location = new System.Drawing.Point(848, 575);
             this.btnXuatDS.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnXuatDS.Name = "btnXuatDS";
             this.btnXuatDS.Primary = true;
@@ -314,7 +282,7 @@
             // btnDelete
             // 
             this.btnDelete.Depth = 0;
-            this.btnDelete.Location = new System.Drawing.Point(775, 575);
+            this.btnDelete.Location = new System.Drawing.Point(724, 575);
             this.btnDelete.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Primary = true;
@@ -324,23 +292,10 @@
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // btnTimSV
-            // 
-            this.btnTimSV.Depth = 0;
-            this.btnTimSV.Location = new System.Drawing.Point(649, 575);
-            this.btnTimSV.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnTimSV.Name = "btnTimSV";
-            this.btnTimSV.Primary = true;
-            this.btnTimSV.Size = new System.Drawing.Size(73, 39);
-            this.btnTimSV.TabIndex = 10;
-            this.btnTimSV.Text = "Tìm kiếm";
-            this.btnTimSV.UseVisualStyleBackColor = true;
-            this.btnTimSV.Click += new System.EventHandler(this.btnTimSV_Click);
-            // 
             // btnCESV
             // 
             this.btnCESV.Depth = 0;
-            this.btnCESV.Location = new System.Drawing.Point(515, 575);
+            this.btnCESV.Location = new System.Drawing.Point(585, 575);
             this.btnCESV.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCESV.Name = "btnCESV";
             this.btnCESV.Primary = true;
@@ -353,7 +308,7 @@
             // btnCMSV
             // 
             this.btnCMSV.Depth = 0;
-            this.btnCMSV.Location = new System.Drawing.Point(381, 575);
+            this.btnCMSV.Location = new System.Drawing.Point(448, 575);
             this.btnCMSV.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnCMSV.Name = "btnCMSV";
             this.btnCMSV.Primary = true;
@@ -366,7 +321,7 @@
             // btnSXDS
             // 
             this.btnSXDS.Depth = 0;
-            this.btnSXDS.Location = new System.Drawing.Point(244, 575);
+            this.btnSXDS.Location = new System.Drawing.Point(310, 575);
             this.btnSXDS.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnSXDS.Name = "btnSXDS";
             this.btnSXDS.Primary = true;
@@ -379,7 +334,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Depth = 0;
-            this.btnUpdate.Location = new System.Drawing.Point(115, 575);
+            this.btnUpdate.Location = new System.Drawing.Point(178, 575);
             this.btnUpdate.MouseState = MaterialSkin.MouseState.HOVER;
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Primary = true;
@@ -389,27 +344,55 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // txtSearch
+            // 
+            this.txtSearch.BackColor = System.Drawing.Color.White;
+            this.txtSearch.Depth = 0;
+            this.txtSearch.Hint = "";
+            this.txtSearch.Location = new System.Drawing.Point(974, 165);
+            this.txtSearch.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.PasswordChar = '\0';
+            this.txtSearch.SelectedText = "";
+            this.txtSearch.SelectionLength = 0;
+            this.txtSearch.SelectionStart = 0;
+            this.txtSearch.Size = new System.Drawing.Size(89, 23);
+            this.txtSearch.TabIndex = 8;
+            this.txtSearch.UseSystemPasswordChar = false;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(944, 162);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(28, 27);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1084, 625);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnSXDS);
             this.Controls.Add(this.btnCMSV);
             this.Controls.Add(this.btnCESV);
-            this.Controls.Add(this.btnTimSV);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnXuatDS);
             this.Controls.Add(this.btnThemSV);
             this.Controls.Add(this.rdbNU);
             this.Controls.Add(this.rdbNAM);
             this.Controls.Add(this.txtDIACHI);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.txtNGANH);
             this.Controls.Add(this.txtNGAYSINH);
             this.Controls.Add(this.txtTEN);
             this.Controls.Add(this.txtHO);
-            this.Controls.Add(this.grbTIMSV);
             this.Controls.Add(this.dgvResult);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
@@ -422,8 +405,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quản lý sinh viên";
             ((System.ComponentModel.ISupportInitialize)(this.dgvResult)).EndInit();
-            this.grbTIMSV.ResumeLayout(false);
-            this.grbTIMSV.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -437,9 +419,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dgvResult;
-        private System.Windows.Forms.GroupBox grbTIMSV;
-        private System.Windows.Forms.Button btnCLOSESEARCH;
-        private System.Windows.Forms.TextBox txtSearch;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtHO;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtDIACHI;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtTEN;
@@ -450,10 +429,11 @@
         private MaterialSkin.Controls.MaterialRaisedButton btnThemSV;
         private MaterialSkin.Controls.MaterialRaisedButton btnXuatDS;
         private MaterialSkin.Controls.MaterialRaisedButton btnDelete;
-        private MaterialSkin.Controls.MaterialRaisedButton btnTimSV;
         private MaterialSkin.Controls.MaterialRaisedButton btnCESV;
         private MaterialSkin.Controls.MaterialRaisedButton btnCMSV;
         private MaterialSkin.Controls.MaterialRaisedButton btnSXDS;
         private MaterialSkin.Controls.MaterialRaisedButton btnUpdate;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtSearch;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
