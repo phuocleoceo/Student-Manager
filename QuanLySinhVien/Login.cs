@@ -1,17 +1,20 @@
 ﻿using QuanLySinhVien.Data;
 using System;
 using System.Windows.Forms;
+using MaterialSkin.Controls;
+using MaterialSkin;
+using System.Drawing;
 
 namespace QuanLySinhVien
 {
-    public partial class Login : Form
+    public partial class Login : MaterialForm
     {
-        /**/
-        AccountRepository repository = new AccountRepository();
-        /**/
+        private readonly AccountRepository repository;
         public Login()
         {
             InitializeComponent();
+            SetupMaterialSkin();
+            repository = new AccountRepository();
         }
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
@@ -28,6 +31,19 @@ namespace QuanLySinhVien
             {
                 MessageBox.Show("Sai tên đăng nhập hoặc mật khẩu\nVui lòng thử lại !", "Error !", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void SetupMaterialSkin()
+        {
+            MaterialSkinManager materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.ROBOTO_REGULAR_11 = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
+            materialSkinManager.ROBOTO_MEDIUM_12 = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
+            materialSkinManager.ROBOTO_MEDIUM_11 = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
+            //materialSkinManager.ROBOTO_MEDIUM_10 = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700, 
+                                                Primary.Indigo100, Accent.Pink200, TextShade.WHITE);            
         }
 
         private void btnPASS_Click(object sender, EventArgs e)

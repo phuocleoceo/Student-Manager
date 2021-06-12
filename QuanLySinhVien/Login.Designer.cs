@@ -29,35 +29,22 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btnDangNhap = new System.Windows.Forms.Button();
-            this.txtNick = new System.Windows.Forms.TextBox();
-            this.txtPass = new System.Windows.Forms.TextBox();
             this.btnSHOWPASS = new System.Windows.Forms.Button();
             this.btnHIDEPASS = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.btnDangNhap = new MaterialSkin.Controls.MaterialRaisedButton();
+            this.txtNick = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtPass = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.label1.Location = new System.Drawing.Point(66, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(284, 37);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Quản Lý Sinh Viên";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 80);
+            this.label2.Location = new System.Drawing.Point(16, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(128, 20);
             this.label2.TabIndex = 0;
@@ -68,49 +55,20 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(51, 125);
+            this.label3.Location = new System.Drawing.Point(52, 130);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "Mật khẩu : ";
-            // 
-            // btnDangNhap
-            // 
-            this.btnDangNhap.BackColor = System.Drawing.SystemColors.Control;
-            this.btnDangNhap.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDangNhap.Location = new System.Drawing.Point(146, 174);
-            this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(106, 50);
-            this.btnDangNhap.TabIndex = 3;
-            this.btnDangNhap.Text = "Đăng nhập ";
-            this.btnDangNhap.UseVisualStyleBackColor = false;
-            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
-            // 
-            // txtNick
-            // 
-            this.txtNick.BackColor = System.Drawing.Color.White;
-            this.txtNick.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNick.Location = new System.Drawing.Point(144, 74);
-            this.txtNick.Name = "txtNick";
-            this.txtNick.Size = new System.Drawing.Size(220, 26);
-            this.txtNick.TabIndex = 1;
-            // 
-            // txtPass
-            // 
-            this.txtPass.BackColor = System.Drawing.Color.White;
-            this.txtPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPass.Location = new System.Drawing.Point(144, 122);
-            this.txtPass.Name = "txtPass";
-            this.txtPass.Size = new System.Drawing.Size(220, 26);
-            this.txtPass.TabIndex = 2;
-            this.txtPass.UseSystemPasswordChar = true;
             // 
             // btnSHOWPASS
             // 
             this.btnSHOWPASS.BackColor = System.Drawing.Color.White;
             this.btnSHOWPASS.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSHOWPASS.BackgroundImage")));
             this.btnSHOWPASS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSHOWPASS.Location = new System.Drawing.Point(338, 122);
+            this.btnSHOWPASS.FlatAppearance.BorderSize = 0;
+            this.btnSHOWPASS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSHOWPASS.Location = new System.Drawing.Point(325, 123);
             this.btnSHOWPASS.Name = "btnSHOWPASS";
             this.btnSHOWPASS.Size = new System.Drawing.Size(26, 26);
             this.btnSHOWPASS.TabIndex = 3;
@@ -122,7 +80,9 @@
             this.btnHIDEPASS.BackColor = System.Drawing.Color.White;
             this.btnHIDEPASS.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnHIDEPASS.BackgroundImage")));
             this.btnHIDEPASS.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnHIDEPASS.Location = new System.Drawing.Point(338, 122);
+            this.btnHIDEPASS.FlatAppearance.BorderSize = 0;
+            this.btnHIDEPASS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHIDEPASS.Location = new System.Drawing.Point(325, 123);
             this.btnHIDEPASS.Name = "btnHIDEPASS";
             this.btnHIDEPASS.Size = new System.Drawing.Size(26, 26);
             this.btnHIDEPASS.TabIndex = 3;
@@ -140,43 +100,83 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Phuoc DUT";
             // 
+            // btnDangNhap
+            // 
+            this.btnDangNhap.Depth = 0;
+            this.btnDangNhap.Location = new System.Drawing.Point(161, 174);
+            this.btnDangNhap.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnDangNhap.Name = "btnDangNhap";
+            this.btnDangNhap.Primary = true;
+            this.btnDangNhap.Size = new System.Drawing.Size(91, 47);
+            this.btnDangNhap.TabIndex = 5;
+            this.btnDangNhap.Text = "Đăng nhập";
+            this.btnDangNhap.UseVisualStyleBackColor = true;
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+            // 
+            // txtNick
+            // 
+            this.txtNick.BackColor = System.Drawing.Color.White;
+            this.txtNick.Depth = 0;
+            this.txtNick.Hint = "";
+            this.txtNick.Location = new System.Drawing.Point(150, 85);
+            this.txtNick.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtNick.Name = "txtNick";
+            this.txtNick.PasswordChar = '\0';
+            this.txtNick.SelectedText = "";
+            this.txtNick.SelectionLength = 0;
+            this.txtNick.SelectionStart = 0;
+            this.txtNick.Size = new System.Drawing.Size(200, 23);
+            this.txtNick.TabIndex = 6;
+            this.txtNick.UseSystemPasswordChar = false;
+            // 
+            // txtPass
+            // 
+            this.txtPass.BackColor = System.Drawing.Color.White;
+            this.txtPass.Depth = 0;
+            this.txtPass.Hint = "";
+            this.txtPass.Location = new System.Drawing.Point(150, 127);
+            this.txtPass.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtPass.Name = "txtPass";
+            this.txtPass.PasswordChar = '\0';
+            this.txtPass.SelectedText = "";
+            this.txtPass.SelectionLength = 0;
+            this.txtPass.SelectionStart = 0;
+            this.txtPass.Size = new System.Drawing.Size(200, 23);
+            this.txtPass.TabIndex = 6;
+            this.txtPass.UseSystemPasswordChar = false;
+            // 
             // Login
             // 
-            this.AcceptButton = this.btnDangNhap;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ClientSize = new System.Drawing.Size(400, 233);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnSHOWPASS);
             this.Controls.Add(this.btnHIDEPASS);
-            this.Controls.Add(this.txtPass);
+            this.Controls.Add(this.btnSHOWPASS);
             this.Controls.Add(this.txtNick);
             this.Controls.Add(this.btnDangNhap);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.txtPass);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Login";
+            this.Text = "Đăng nhập";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btnDangNhap;
-        private System.Windows.Forms.TextBox txtNick;
-        private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Button btnSHOWPASS;
         private System.Windows.Forms.Button btnHIDEPASS;
         private System.Windows.Forms.Label label4;
+        private MaterialSkin.Controls.MaterialRaisedButton btnDangNhap;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtNick;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtPass;
     }
 }
 
