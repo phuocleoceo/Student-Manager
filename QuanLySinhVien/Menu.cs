@@ -20,13 +20,10 @@ namespace QuanLySinhVien
         public Menu()
         {
             InitializeComponent();
-            SetupMaterialSkin();
             repository = new SinhVienRepository();
-        }
-        private void Menu_Load(object sender, EventArgs e)
-        {
+            SetupMaterialSkin();
             grbTIMSV.Hide();
-            FormatTable();
+            dgvResult.FormatDataGridView();
             LoadTableFromDatabase();
         }
         #region PhuongThucBoTro
@@ -42,18 +39,6 @@ namespace QuanLySinhVien
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700,
                                                 Primary.Indigo100, Accent.Pink200, TextShade.WHITE);
         }
-        private void FormatTable()
-        {
-            dgvResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvResult.DefaultCellStyle.Font = new Font("Tahoma", 12);
-            dgvResult.DefaultCellStyle.ForeColor = Color.Blue;
-            dgvResult.DefaultCellStyle.BackColor = Color.Beige;   //Beige
-            dgvResult.DefaultCellStyle.SelectionForeColor = Color.Yellow;
-            dgvResult.DefaultCellStyle.SelectionBackColor = Color.Black;
-            dgvResult.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dgvResult.ColumnHeadersDefaultCellStyle.Font = new Font("Tahoma", 10);
-        }
-
         void ClearTextBox()
         {
             txtHO.Text = "";
