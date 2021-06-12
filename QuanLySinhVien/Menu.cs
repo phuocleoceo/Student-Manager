@@ -1,13 +1,13 @@
-﻿using QuanLySinhVien.Data;
+﻿using MaterialSkin;
+using MaterialSkin.Controls;
+using QuanLySinhVien.Data;
 using QuanLySinhVien.Model;
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using MaterialSkin.Controls;
-using MaterialSkin;
+using QuanLySinhVien;
 
 namespace QuanLySinhVien
 {
@@ -50,7 +50,7 @@ namespace QuanLySinhVien
         void LoadTableFromDatabase()
         {
             ClearTable();
-            list = repository.Read();
+            list = repository.Read().ToSortableBindingList();
             dgvResult.DataSource = list;
             dgvResult.Columns["Id"].Visible = false;
         }

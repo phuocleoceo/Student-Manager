@@ -9,7 +9,7 @@ namespace QuanLySinhVien.Model
         public int Id { get; set; }
 
         [DisplayName("Họ")]
-        [Required(ErrorMessage ="Họ không được để trống")]
+        [Required(ErrorMessage = "Họ không được để trống")]
         public string Ho { get; set; }
 
         [DisplayName("Tên")]

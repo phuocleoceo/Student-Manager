@@ -1,9 +1,9 @@
-﻿using QuanLySinhVien.Data;
-using System;
-using System.Windows.Forms;
+﻿using MaterialSkin;
 using MaterialSkin.Controls;
-using MaterialSkin;
+using QuanLySinhVien.Data;
+using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace QuanLySinhVien
 {
@@ -43,8 +43,8 @@ namespace QuanLySinhVien
             //materialSkinManager.ROBOTO_MEDIUM_10 = new Font("Microsoft Sans Serif", 12f, FontStyle.Regular);
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700, 
-                                                Primary.Indigo100, Accent.Pink200, TextShade.WHITE);            
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700,
+                                                Primary.Indigo100, Accent.Pink200, TextShade.WHITE);
         }
 
         private void btnPASS_Click(object sender, EventArgs e)

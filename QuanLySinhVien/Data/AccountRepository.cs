@@ -1,12 +1,11 @@
 ﻿using QuanLySinhVien.Model;
 using System.Collections.Generic;
-using Dapper;
 
 namespace QuanLySinhVien.Data
 {
     public class AccountRepository : Repository<Account>
     {
-        public SortableBindingList<Account> Read()
+        public IEnumerable<Account> Read()
         {
             string query = "SELECT * FROM Account";
             return GetAll(query);

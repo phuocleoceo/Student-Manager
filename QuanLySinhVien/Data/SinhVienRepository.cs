@@ -1,19 +1,18 @@
-﻿using QuanLySinhVien.Model;
-using System.Collections.Generic;
-using QuanLySinhVien;
-using Dapper;
+﻿using Dapper;
+using QuanLySinhVien.Model;
 using System;
+using System.Collections.Generic;
 
 namespace QuanLySinhVien.Data
 {
     public class SinhVienRepository : Repository<SinhVien>
     {
-        public SortableBindingList<SinhVien> Read()
+        public IEnumerable<SinhVien> Read()
         {
             string query = "SELECT * FROM SinhVien";
             return GetAll(query);
         }
-        public SortableBindingList<SinhVien> Search(string Name)
+        public IEnumerable<SinhVien> Search(string Name)
         {
             string query = @"SELECT * FROM SinhVien 
                             WHERE Ten LIKE N'%' + @Name + '%'";
