@@ -25,8 +25,13 @@ namespace QuanLySinhVien
             repository = new SinhVienRepository();
             SetupMaterialSkin();
             dgvResult.FormatDataGridView();
-            LoadTableFromDatabase();
         }
+
+        private async void Menu_Load(object sender, EventArgs e)
+        {
+            await LoadTableFromDatabase();
+        }
+
         #region PhuongThucBoTro
         private void SetupMaterialSkin()
         {
@@ -40,7 +45,7 @@ namespace QuanLySinhVien
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700,
                                                 Primary.Indigo100, Accent.Pink200, TextShade.WHITE);
         }
-        void ClearTextBox()
+        private void ClearTextBox()
         {
             txtHO.Text = "";
             txtTEN.Text = "";
@@ -49,7 +54,7 @@ namespace QuanLySinhVien
             txtNGANH.Text = "";
         }
 
-        private async void LoadTableFromDatabase()
+        private async Task LoadTableFromDatabase()
         {
             ClearTable();
             list = (await repository.Read()).ToSortableBindingList();
@@ -64,7 +69,7 @@ namespace QuanLySinhVien
             dgvResult.Columns["Id"].Visible = false;
         }
 
-        void ClearTable()
+        private void ClearTable()
         {
             dgvResult.DataSource = null;
             dgvResult.Rows.Clear();
@@ -102,7 +107,7 @@ namespace QuanLySinhVien
                     MaSinhVien = "",
                     Email = ""
                 });
-                LoadTableFromDatabase();
+                await LoadTableFromDatabase();
                 ClearTextBox();
             }
             catch (Exception ex)
@@ -124,7 +129,7 @@ namespace QuanLySinhVien
                         await repository.Delete(Convert.ToInt32(row.Cells["Id"].Value));
                     }
                 }
-                LoadTableFromDatabase();
+                await LoadTableFromDatabase();
             }
         }
 
@@ -145,7 +150,7 @@ namespace QuanLySinhVien
                     MaSinhVien = "",
                     Email = ""
                 });
-                LoadTableFromDatabase();
+                await LoadTableFromDatabase();
                 ClearTextBox();
             }
             catch (Exception ex)
@@ -259,6 +264,6 @@ namespace QuanLySinhVien
         {
             ExportCSV();
         }
-        #endregion        
+        #endregion
     }
 }
