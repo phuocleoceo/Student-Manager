@@ -163,35 +163,33 @@ namespace QuanLySinhVien
         #endregion
 
         #region MSV-Email
-        private void btnCMSV_Click(object sender, EventArgs e)
+        private async void btnCMSV_Click(object sender, EventArgs e)
         {
-            //Task task = new Task(() =>
-            //{
-            //    for (int i = 0; i < list.Count; i++)
-            //    {
-            //        int stt = 102190200 + i;
-            //        list[i].MaSinhVien = stt.ToString();
-            //    }
-            //    ClearTable();
-            //    LoadTableFromList();
-            //});
-            //task.Start();
-            //await task;
-            for (int i = 0; i < list.Count; i++)
+            Task task = new Task(() =>
             {
-                int stt = 102190200 + i;
-                list[i].MaSinhVien = stt.ToString();
-            }
+                for (int i = 0; i < list.Count; i++)
+                {
+                    int stt = 102190200 + i;
+                    list[i].MaSinhVien = stt.ToString();
+                }
+            });
+            task.Start();
+            await task;
             ClearTable();
             LoadTableFromList();
         }
 
-        private void btnCESV_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < list.Count; i++)
+        private async void btnCESV_Click(object sender, EventArgs e)
+        {            
+            Task task = new Task(() =>
             {
-                list[i].Email = String.Concat(list[i].MaSinhVien, "@sv.dut.edu.vn");
-            }
+                for (int i = 0; i < list.Count; i++)
+                {
+                    list[i].Email = String.Concat(list[i].MaSinhVien, "@sv.dut.edu.vn");
+                }
+            });
+            task.Start();
+            await task;
             ClearTable();
             LoadTableFromList();
         }
