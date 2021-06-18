@@ -185,7 +185,7 @@ namespace QuanLySinhVien
         }
 
         private async void btnCESV_Click(object sender, EventArgs e)
-        {            
+        {
             Task task = new Task(() =>
             {
                 for (int i = 0; i < list.Count; i++)
@@ -240,7 +240,9 @@ namespace QuanLySinhVien
                             {
                                 for (int j = 0; j < columnCount; j++)
                                 {
-                                    outputCsv[i] += dgvResult.Rows[i - 1].Cells[j].Value.ToString() + ",";
+                                    object value = dgvResult.Rows[i - 1].Cells[j].Value;
+                                    string output = (value != null) ? (value.ToString()) : "";
+                                    outputCsv[i] += output + ",";
                                 }
                             }
 
