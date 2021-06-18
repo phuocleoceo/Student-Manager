@@ -17,11 +17,11 @@ namespace QuanLySinhVien
             txtPass.UseSystemPasswordChar = true;
             repository = new AccountRepository();
         }
-        private void btnDangNhap_Click(object sender, EventArgs e)
+        private async void btnDangNhap_Click(object sender, EventArgs e)
         {
             string Nick = txtNick.Text;
             string Pass = txtPass.Text;
-            if (repository.CheckLogin(Nick, Pass))
+            if (await repository.CheckLogin(Nick, Pass))
             {
                 this.Hide();
                 Menu menu = new Menu();

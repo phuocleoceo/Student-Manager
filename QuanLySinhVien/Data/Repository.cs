@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace QuanLySinhVien.Data
 {
@@ -11,30 +11,30 @@ namespace QuanLySinhVien.Data
     {
         private string ConnectionString => ConfigurationManager.ConnectionStrings["QLSV"].ConnectionString;
 
-        public IEnumerable<T> GetAll(string query, DynamicParameters dp = null)
+        public async Task<IEnumerable<T>> GetAll(string query, DynamicParameters dp = null)
         {
             using (IDbConnection con = new SqlConnection(ConnectionString))
             {
                 if (con.State == ConnectionState.Closed) con.Open();
-                return con.Query<T>(query, dp);
+                return await con.QueryAsync<T>(query, dp);
             }
         }
 
-        public T GetOne(string query, DynamicParameters dp = null)
+        public async Task<T> GetOne(string query, DynamicParameters dp = null)
         {
             using (IDbConnection con = new SqlConnection(ConnectionString))
             {
                 if (con.State == ConnectionState.Closed) con.Open();
-                return con.Query<T>(query, dp).FirstOrDefault();
+                return await con.QueryFirstOrDefaultAsync<T>(query, dp);
             }
         }
 
-        public void Execute(string query, DynamicParameters dp)
+        public async Task Execute(string query, DynamicParameters dp)
         {
             using (IDbConnection con = new SqlConnection(ConnectionString))
             {
                 if (con.State == ConnectionState.Closed) con.Open();
-                con.Execute(query, dp);
+                await con.ExecuteAsync(query, dp);
             }
         }
     }

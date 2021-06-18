@@ -8,6 +8,8 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using QuanLySinhVien;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace QuanLySinhVien
 {
@@ -23,8 +25,13 @@ namespace QuanLySinhVien
             repository = new SinhVienRepository();
             SetupMaterialSkin();
             dgvResult.FormatDataGridView();
-            LoadTableFromDatabase();
         }
+
+        private async void Menu_Load(object sender, EventArgs e)
+        {
+            await LoadTableFromDatabase();
+        }
+
         #region PhuongThucBoTro
         private void SetupMaterialSkin()
         {
@@ -38,7 +45,7 @@ namespace QuanLySinhVien
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Indigo500, Primary.Indigo700,
                                                 Primary.Indigo100, Accent.Pink200, TextShade.WHITE);
         }
-        void ClearTextBox()
+        private void ClearTextBox()
         {
             txtHO.Text = "";
             txtTEN.Text = "";
@@ -47,48 +54,49 @@ namespace QuanLySinhVien
             txtNGANH.Text = "";
         }
 
-        void LoadTableFromDatabase()
+        private async Task LoadTableFromDatabase()
         {
             ClearTable();
-            list = repository.Read().ToSortableBindingList();
+            list = (await repository.Read()).ToSortableBindingList();
             dgvResult.DataSource = list;
             dgvResult.Columns["Id"].Visible = false;
         }
 
-        void LoadTableFromList()
+        private void LoadTableFromList()
         {
             ClearTable();
             dgvResult.DataSource = list;
             dgvResult.Columns["Id"].Visible = false;
         }
 
-        void ClearTable()
+        private void ClearTable()
         {
             dgvResult.DataSource = null;
             dgvResult.Rows.Clear();
         }
         #endregion
 
+        #region CRUD
         private void dgvResult_SelectionChanged(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dgvResult.SelectedRows)
             {
-                txtHO.Text = row.Cells[1].Value.ToString();
-                txtTEN.Text = row.Cells[2].Value.ToString();
-                txtNGAYSINH.Text = row.Cells[3].Value.ToString();
-                if (Convert.ToBoolean(row.Cells[4].Value) == true)
+                txtHO.Text = row.Cells["Ho"].Value.ToString();
+                txtTEN.Text = row.Cells["Ten"].Value.ToString();
+                txtNGAYSINH.Text = row.Cells["NgaySinh"].Value.ToString();
+                if (Convert.ToBoolean(row.Cells["GioiTinh"].Value) == true)
                     rdbNAM.Checked = true;
                 else rdbNU.Checked = true;
-                txtDIACHI.Text = row.Cells[5].Value.ToString();
-                txtNGANH.Text = row.Cells[6].Value.ToString();
+                txtDIACHI.Text = row.Cells["DiaChi"].Value.ToString();
+                txtNGANH.Text = row.Cells["NganhHoc"].Value.ToString();
             }
         }
 
-        private void btnThemSV_Click(object sender, EventArgs e)
+        private async void btnThemSV_Click(object sender, EventArgs e)
         {
             try
             {
-                SinhVien sv = new SinhVien
+                await repository.Insert(new SinhVien()
                 {
                     Ho = txtHO.Text,
                     Ten = txtTEN.Text,
@@ -98,9 +106,8 @@ namespace QuanLySinhVien
                     NganhHoc = txtNGANH.Text,
                     MaSinhVien = "",
                     Email = ""
-                };
-                repository.Insert(sv);
-                LoadTableFromDatabase();
+                });
+                await LoadTableFromDatabase();
                 ClearTextBox();
             }
             catch (Exception ex)
@@ -109,34 +116,31 @@ namespace QuanLySinhVien
             }
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private async void btnDelete_Click(object sender, EventArgs e)
         {
-            DialogResult dialogResult = MessageBox.Show("Confirm Delete ?", "Warning !", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
+            DataGridViewSelectedRowCollection r = dgvResult.SelectedRows;
+            if (r.Count > 0)
             {
-                int deleteID = 0;
-                foreach (DataGridViewRow row in dgvResult.SelectedRows)
+                DialogResult dialogResult = MessageBox.Show("Xác nhận xoá ?", "Bình tĩnh !", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    deleteID = Convert.ToInt32(row.Cells[0].Value.ToString());
+                    foreach (DataGridViewRow row in r)
+                    {
+                        await repository.Delete(Convert.ToInt32(row.Cells["Id"].Value));
+                    }
                 }
-                repository.Delete(deleteID);
-                LoadTableFromDatabase();
+                await LoadTableFromDatabase();
             }
         }
 
-
-        private void btnUpdate_Click(object sender, EventArgs e)
+        private async void btnUpdate_Click(object sender, EventArgs e)
         {
             try
             {
-                int updateId = 0;
-                foreach (DataGridViewRow row in dgvResult.SelectedRows)
+                DataGridViewSelectedRowCollection r = dgvResult.SelectedRows;
+                await repository.Update(new SinhVien()
                 {
-                    updateId = Convert.ToInt32(row.Cells[0].Value.ToString());
-                }
-                SinhVien sv = new SinhVien
-                {
-                    Id = updateId,
+                    Id = Convert.ToInt32(r[0].Cells["Id"].Value),
                     Ho = txtHO.Text,
                     Ten = txtTEN.Text,
                     NgaySinh = Convert.ToDateTime(txtNGAYSINH.Text),
@@ -145,9 +149,8 @@ namespace QuanLySinhVien
                     NganhHoc = txtNGANH.Text,
                     MaSinhVien = "",
                     Email = ""
-                };
-                repository.Update(sv);
-                LoadTableFromDatabase();
+                });
+                await LoadTableFromDatabase();
                 ClearTextBox();
             }
             catch (Exception ex)
@@ -156,15 +159,49 @@ namespace QuanLySinhVien
             }
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private async void txtSearch_TextChanged(object sender, EventArgs e)
         {
             ClearTable();
-            dgvResult.DataSource = repository.Search(txtSearch.Text);
+            dgvResult.DataSource = (await repository.Search(txtSearch.Text)).ToSortableBindingList();
             dgvResult.Columns["Id"].Visible = false;
         }
+        #endregion
+
+        #region MSV-Email
+        private async void btnCMSV_Click(object sender, EventArgs e)
+        {
+            Task task = new Task(() =>
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    int stt = 102190200 + i;
+                    list[i].MaSinhVien = stt.ToString();
+                }
+            });
+            task.Start();
+            await task;
+            ClearTable();
+            LoadTableFromList();
+        }
+
+        private async void btnCESV_Click(object sender, EventArgs e)
+        {
+            Task task = new Task(() =>
+            {
+                for (int i = 0; i < list.Count; i++)
+                {
+                    list[i].Email = String.Concat(list[i].MaSinhVien, "@sv.dut.edu.vn");
+                }
+            });
+            task.Start();
+            await task;
+            ClearTable();
+            LoadTableFromList();
+        }
+        #endregion
 
         #region MSV Email XuatDS
-        private void btnXuatDS_Click(object sender, EventArgs e)
+        private void ExportCSV()
         {
             if (dgvResult.Rows.Count > 0)
             {
@@ -203,7 +240,9 @@ namespace QuanLySinhVien
                             {
                                 for (int j = 0; j < columnCount; j++)
                                 {
-                                    outputCsv[i] += dgvResult.Rows[i - 1].Cells[j].Value.ToString() + ",";
+                                    object value = dgvResult.Rows[i - 1].Cells[j].Value;
+                                    string output = (value != null) ? (value.ToString()) : "";
+                                    outputCsv[i] += output + ",";
                                 }
                             }
 
@@ -223,25 +262,9 @@ namespace QuanLySinhVien
             }
         }
 
-        private void btnCMSV_Click(object sender, EventArgs e)
+        private void btnXuatDS_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < list.Count; i++)
-            {
-                int stt = 102190200 + i;
-                list[i].MaSinhVien = stt.ToString();
-            }
-            ClearTable();
-            LoadTableFromList();
-        }
-
-        private void btnCESV_Click(object sender, EventArgs e)
-        {
-            for (int i = 0; i < list.Count; i++)
-            {
-                list[i].Email = String.Concat(list[i].MaSinhVien, "@sv.dut.edu.vn");
-            }
-            ClearTable();
-            LoadTableFromList();
+            ExportCSV();
         }
         #endregion
     }
