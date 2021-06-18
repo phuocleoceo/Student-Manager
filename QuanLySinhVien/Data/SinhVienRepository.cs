@@ -2,26 +2,28 @@
 using QuanLySinhVien.Model;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace QuanLySinhVien.Data
 {
     public class SinhVienRepository : Repository<SinhVien>
     {
-        public IEnumerable<SinhVien> Read()
+        public async Task<IEnumerable<SinhVien>> Read()
         {
             string query = "SELECT * FROM SinhVien";
-            return GetAll(query);
+            return await GetAll(query);
         }
-        public IEnumerable<SinhVien> Search(string Name)
+
+        public async Task<IEnumerable<SinhVien>> Search(string Name)
         {
             string query = @"SELECT * FROM SinhVien 
                             WHERE Ten LIKE N'%' + @Name + '%'";
             DynamicParameters dp = new DynamicParameters();
             dp.Add("@Name", Name);
-            return GetAll(query, dp);
+            return await GetAll(query, dp);
         }
 
-        public void Insert(SinhVien sv)
+        public async Task Insert(SinhVien sv)
         {
             if (sv.Validate().Length == 0)
             {
@@ -34,20 +36,20 @@ namespace QuanLySinhVien.Data
                 dp.Add("@GioiTinh", sv.GioiTinh);
                 dp.Add("@DiaChi", sv.DiaChi);
                 dp.Add("@NganhHoc", sv.NganhHoc);
-                Execute(query, dp);
+                await Execute(query, dp);
             }
             else throw new Exception(sv.Validate());
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
             string query = "DELETE FROM SinhVien WHERE Id = @Id";
             DynamicParameters dp = new DynamicParameters();
             dp.Add("@Id", id);
-            Execute(query, dp);
+            await Execute(query, dp);
         }
 
-        public void Update(SinhVien sv)
+        public async Task Update(SinhVien sv)
         {
             if (sv.Validate().Length == 0)
             {
@@ -68,7 +70,7 @@ namespace QuanLySinhVien.Data
                 dp.Add("@DiaChi", sv.DiaChi);
                 dp.Add("@NganhHoc", sv.NganhHoc);
                 dp.Add("@Id", sv.Id);
-                Execute(query, dp);
+                await Execute(query, dp);
             }
             else throw new Exception(sv.Validate());
         }

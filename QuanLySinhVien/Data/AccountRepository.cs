@@ -1,20 +1,20 @@
 ﻿using QuanLySinhVien.Model;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace QuanLySinhVien.Data
 {
     public class AccountRepository : Repository<Account>
     {
-        public IEnumerable<Account> Read()
+        public async Task<IEnumerable<Account>> Read()
         {
             string query = "SELECT * FROM Account";
-            return GetAll(query);
+            return await GetAll(query);
         }
 
-        public bool CheckLogin(string UserName, string PassWord)
+        public async Task<bool> CheckLogin(string UserName, string PassWord)
         {
-            var listAccount = Read();
-            foreach (Account nick in listAccount)
+            foreach (Account nick in await Read())
             {
                 if (nick.UserName == UserName && nick.PassWord == PassWord)
                     return true;
